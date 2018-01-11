@@ -21,8 +21,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         setupViews()
+        
+        
         PHPhotoLibrary.requestAuthorization { (status) in
-            self.saveScreenShotButton.isEnabled = (status == .authorized)
+            DispatchQueue.main.async {
+                self.saveScreenShotButton.isEnabled = (status == .authorized)
+            }
         }
     }
 
